@@ -1,15 +1,30 @@
 package com.empserver.model;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 
-public class Employee {
+public class EmployeeDetail {
 
+    //private Employee employee;
     private int employeeNo;
     private LocalDate birthDate;
     private String firstName;
     private String lastName;
     private Gender gender;
     private LocalDate hireDate;
+
+    private Title title;
+
+    private List<Salary> salaries;
+
+    public List<Salary> getSalaries() {
+        return salaries;
+    }
+
+    public void setSalaries(List<Salary> salaries) {
+        this.salaries = salaries;
+    }
 
     public int getEmployeeNo() {
         return employeeNo;
@@ -57,5 +72,13 @@ public class Employee {
 
     public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
     }
 }
