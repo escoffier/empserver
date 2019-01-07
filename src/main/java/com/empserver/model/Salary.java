@@ -2,9 +2,9 @@ package com.empserver.model;
 
 import java.time.LocalDate;
 
-public class Title {
+public class Salary {
     int employeeNo;
-    String title;
+    int salary;
     LocalDate fromDate;
     LocalDate toDate;
 
@@ -16,12 +16,12 @@ public class Title {
         this.employeeNo = employeeNo;
     }
 
-    public String getTitle() {
-        return title;
+    public int getSalary() {
+        return salary;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     public LocalDate getFromDate() {
@@ -40,5 +40,3 @@ public class Title {
         this.toDate = toDate;
     }
 }
-
-
