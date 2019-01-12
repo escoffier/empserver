@@ -19,7 +19,7 @@ public class MybatisConfig {
     DataSource dataSource(){
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://140.143.45.252:3306/employees?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8");
+        dataSource.setUrl("jdbc:mysql://192.168.21.225:3306/employees?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8");
         dataSource.setUsername("testuser");
         dataSource.setPassword("19811981");
         dataSource.setMaxIdle(20);
@@ -31,11 +31,11 @@ public class MybatisConfig {
 
     @Bean
     SqlSessionFactory sqlSessionFactory(@Qualifier("dataSourceDB") DataSource dataSource,
-                                        @Value("classpath:mappers/*.xml") Resource[] mappers,
+                                        @Value("classpath:mappers/*.xml") Resource[] resources,
                                         @Value("classpath:mybatis-config.xml") Resource config) throws Exception{
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setMapperLocations(mappers);
+        sqlSessionFactoryBean.setMapperLocations(resources);
         sqlSessionFactoryBean.setConfigLocation(config);
         return sqlSessionFactoryBean.getObject();
     }

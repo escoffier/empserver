@@ -18,13 +18,12 @@
         <setting name="mapUnderscoreToCamelCase" value="false"/>
         <setting name="localCacheScope" value="SESSION"/>
         <setting name="jdbcTypeForNull" value="OTHER"/>
-        <setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+        <setting name="lazyLoadTriggerMethods"
+                 value="equals,clone,hashCode,toString"/>
     </settings>
     <typeAliases>
-        <!--<package name="om.empserver.model"/>-->
-        <typeAlias type="com.empserver.model.Employee" alias="Employee"/>
-        <typeAlias type="com.empserver.model.EmployeeDetail" alias="EmployeeDetail"/>
         <typeAlias type="com.empserver.model.Title" alias="Title"/>
         <typeAlias type="com.empserver.model.Salary" alias="Salary"/>
+        <typeAlias type="com.empserver.model.EmployeeDetail" alias="EmployeeDetail"/>
     </typeAliases>
 </configuration>

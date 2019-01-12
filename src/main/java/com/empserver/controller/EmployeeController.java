@@ -47,6 +47,7 @@ public class EmployeeController {
 
     @GetMapping("/employeesdetail/{id}")
     EmployeeDetail employeeDetail(@PathVariable("id") Long id) {
-        return employeeDetailMapper.selectById(id);
+        EmployeeDetail employeeDetail = employeeDetailMapper.selectById(id);
+        return employeeDetail;
     }
 }

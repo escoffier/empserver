@@ -1,30 +1,22 @@
 package com.empserver.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDate;
-import java.util.LinkedList;
+import java.util.Date;
 import java.util.List;
 
+@JsonIgnoreProperties({"handler"})
 public class EmployeeDetail {
 
-    //private Employee employee;
     private int employeeNo;
     private LocalDate birthDate;
     private String firstName;
     private String lastName;
     private Gender gender;
     private LocalDate hireDate;
-
     private Title title;
-
     private List<Salary> salaries;
-
-    public List<Salary> getSalaries() {
-        return salaries;
-    }
-
-    public void setSalaries(List<Salary> salaries) {
-        this.salaries = salaries;
-    }
 
     public int getEmployeeNo() {
         return employeeNo;
@@ -80,5 +72,13 @@ public class EmployeeDetail {
 
     public void setTitle(Title title) {
         this.title = title;
+    }
+
+    public List<Salary> getSalaries() {
+        return salaries;
+    }
+
+    public void setSalaries(List<Salary> salaries) {
+        this.salaries = salaries;
     }
 }

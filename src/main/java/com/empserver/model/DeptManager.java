@@ -1,11 +1,11 @@
 package com.empserver.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class DeptManager {
 
     int employeeNo;
     String deptNo;
-    Date fromDate;
-    Date toDate;
+    LocalDate fromDate;
+    LocalDate toDate;
 }
