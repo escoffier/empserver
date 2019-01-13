@@ -21,9 +21,28 @@
         <setting name="lazyLoadTriggerMethods"
                  value="equals,clone,hashCode,toString"/>
     </settings>
+
     <typeAliases>
         <typeAlias type="com.empserver.model.Title" alias="Title"/>
         <typeAlias type="com.empserver.model.Salary" alias="Salary"/>
         <typeAlias type="com.empserver.model.EmployeeDetail" alias="EmployeeDetail"/>
+        <typeAlias type="com.empserver.model.Employee" alias="Employee"/>
     </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="MANAGED"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://140.143.45.252:3306/employees?useUnicode=true"/>
+                <property name="username" value="testuser"/>
+                <property name="password" value="19811981"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mappers/EmployeeMapper.xml"/>
+        <mapper resource="mappers/EmployeeDetailMapper.xml" />
+    </mappers>
+
 </configuration>
