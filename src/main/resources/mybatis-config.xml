@@ -6,6 +6,7 @@
     <settings>
         <setting name="cacheEnabled" value="true"/>
         <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false" />
         <setting name="multipleResultSetsEnabled" value="true"/>
         <setting name="useColumnLabel" value="true"/>
         <setting name="useGeneratedKeys" value="false"/>
@@ -28,17 +29,17 @@
         <typeAlias type="com.empserver.model.EmployeeDetail" alias="EmployeeDetail"/>
         <typeAlias type="com.empserver.model.Employee" alias="Employee"/>
     </typeAliases>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="MANAGED"></transactionManager>
-            <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://140.143.45.252:3306/employees?useUnicode=true"/>
-                <property name="username" value="testuser"/>
-                <property name="password" value="19811981"/>
-            </dataSource>
-        </environment>
-    </environments>
+    <!--<environments default="development">-->
+        <!--<environment id="development">-->
+            <!--<transactionManager type="MANAGED"/>-->
+            <!--<dataSource type="POOLED">-->
+                <!--<property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+                <!--<property name="url" value="jdbc:mysql://140.143.45.252:3306/employees?useUnicode=true"/>-->
+                <!--<property name="username" value="testuser"/>-->
+                <!--<property name="password" value="19811981"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
 
     <mappers>
         <mapper resource="mappers/EmployeeMapper.xml"/>

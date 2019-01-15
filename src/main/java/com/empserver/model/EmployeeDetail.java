@@ -2,12 +2,15 @@ package com.empserver.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @JsonIgnoreProperties({"handler"})
-public class EmployeeDetail {
+public class EmployeeDetail implements Serializable {
+
+    private static final long serialVersionUID = 10002L;
 
     private int employeeNo;
     private LocalDate birthDate;

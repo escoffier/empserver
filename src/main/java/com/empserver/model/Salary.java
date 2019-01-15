@@ -1,8 +1,12 @@
 package com.empserver.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Salary {
+public class Salary implements Serializable {
+
+    private static final long serialVersionUID = 30002L;
+
     int employeeNo;
     int salary;
     LocalDate fromDate;

@@ -1,9 +1,9 @@
 package com.empserver.controller;
 
-import com.empserver.mapper.EmployeeDetailMapper;
 import com.empserver.mapper.EmployeeMapper;
 import com.empserver.model.Employee;
 import com.empserver.model.EmployeeDetail;
+import com.empserver.service.ServiceImpl;
 import com.empserver.util.ExtLimit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,11 +24,11 @@ public class EmployeeController {
     EmployeeMapper employeeMapper;
 
     @Autowired
-    EmployeeDetailMapper employeeDetailMapper;
+    ServiceImpl service;
 
     @GetMapping("/employees/{id}")
     Employee getEmployee(@PathVariable("id") Long id) {
-        return employeeMapper.selectById(id);
+        return service.getEmployee(id);
     }
 
     @GetMapping("/employees")
@@ -47,7 +47,8 @@ public class EmployeeController {
 
     @GetMapping("/employeesdetail/{id}")
     EmployeeDetail employeeDetail(@PathVariable("id") Long id) {
-        EmployeeDetail employeeDetail = employeeDetailMapper.selectById(id);
-        return employeeDetail;
+        return service.employeeDetail(id);
+//        EmployeeDetail employeeDetail = employeeDetailMapper.selectById(id);
+//        return employeeDetail;
     }
 }
