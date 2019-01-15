@@ -3,6 +3,7 @@ package com.empserver.controller;
 import com.empserver.mapper.EmployeeMapper;
 import com.empserver.model.Employee;
 import com.empserver.model.EmployeeDetail;
+import com.empserver.model.Title;
 import com.empserver.service.ServiceImpl;
 import com.empserver.util.ExtLimit;
 import org.slf4j.Logger;
@@ -50,5 +51,11 @@ public class EmployeeController {
         return service.employeeDetail(id);
 //        EmployeeDetail employeeDetail = employeeDetailMapper.selectById(id);
 //        return employeeDetail;
+    }
+
+    @GetMapping("/title/{id}")
+    Title getTitle(@PathVariable("id") Long id)
+    {
+        return service.getTitle(id);
     }
 }

@@ -7,6 +7,8 @@
     size="512"
     readOnly="true"/>
 
+    <cache-ref namespace="com.empserver.mapper.TitleMapper"/>
+
     <resultMap id="employeesDetailResultMap" type="EmployeeDetail">
         <id property="employeeNo" column="emp_no"/>
         <result property="birthDate" column="birth_date"/>
@@ -54,16 +56,16 @@
         <result property="lastName" column="last_name"/>
         <result property="gender" column="gender"/>
         <result property="hireDate" column="hire_date"/>
-        <association property="title" column="emp_no" javaType="Title" select="selectTitle"/>
+        <association property="title" column="emp_no" javaType="Title" select="com.empserver.mapper.TitleMapper.selectById"/>
         <collection property="salaries" column="emp_no" ofType="Salary" select="selectSalary"/>
     </resultMap>
 
-    <resultMap id="titleResultMap" type="Title">
-        <id property="employeeNo" column="emp_no"/>
-        <result property="title" column="title"/>
-        <result property="fromDate" column="from_date"/>
-        <result property="toDate" column="to_date"/>
-    </resultMap>
+    <!--<resultMap id="titleResultMap" type="Title">-->
+        <!--<id property="employeeNo" column="emp_no"/>-->
+        <!--<result property="title" column="title"/>-->
+        <!--<result property="fromDate" column="from_date"/>-->
+        <!--<result property="toDate" column="to_date"/>-->
+    <!--</resultMap>-->
 
     <resultMap id="salaryResultMap" type="Salary">
         <result property="employeeNo" column="emp_no"/>
@@ -84,11 +86,11 @@
         WHERE emp_no = #{id}
     </select>
 
-    <select id="selectTitle" parameterType="long" resultMap="titleResultMap">
-        SELECT emp_no, title, from_date, to_date
-        FROM titles
-        WHERE emp_no = #{id}
-    </select>
+    <!--<select id="selectTitle" parameterType="long" resultMap="titleResultMap">-->
+        <!--SELECT emp_no, title, from_date, to_date-->
+        <!--FROM titles-->
+        <!--WHERE emp_no = #{id}-->
+    <!--</select>-->
     <!--<cache/>-->
 
 </mapper>
