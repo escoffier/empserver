@@ -53,6 +53,17 @@ public class EmployeeController {
 //        return employeeDetail;
     }
 
+    @GetMapping("/employeesdetail/lazy/{id}")
+    EmployeeDetail getEmployeeDetail(@PathVariable("id") Long id) {
+        //return service.employeeDetail(id);
+        EmployeeDetail employeeDetail = service.employeeDetail(id);
+        logger.info("load employeeDetail");
+        Title title = employeeDetail.getTitle();
+
+        logger.info("after load employeeDetail");
+        return employeeDetail;
+    }
+
     @GetMapping("/title/{id}")
     Title getTitle(@PathVariable("id") Long id)
     {
