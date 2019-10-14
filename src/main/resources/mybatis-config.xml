@@ -28,6 +28,7 @@
         <typeAlias type="com.empserver.model.Salary" alias="Salary"/>
         <typeAlias type="com.empserver.model.EmployeeDetail" alias="EmployeeDetail"/>
         <typeAlias type="com.empserver.model.Employee" alias="Employee"/>
+        <typeAlias type="com.empserver.model.User" alias="User"/>
     </typeAliases>
     <!--<environments default="development">-->
         <!--<environment id="development">-->
@@ -45,6 +46,7 @@
         <mapper resource="mappers/EmployeeMapper.xml"/>
         <mapper resource="mappers/EmployeeDetailMapper.xml" />
         <mapper resource="mappers/TitleMapper.xml" />
+        <mapper resource="mappers/UserMapper.xml"/>
     </mappers>
 
 </configuration>

@@ -1,5 +1,6 @@
 package com.empserver.controller;
 
+import com.empserver.exceptions.EntityNotFoundException;
 import com.empserver.mapper.EmployeeMapper;
 import com.empserver.model.Employee;
 import com.empserver.model.EmployeeDetail;
@@ -32,6 +33,11 @@ public class EmployeeController {
         return service.getEmployee(id);
     }
 
+    @GetMapping("v2/employees/{id}")
+    Employee getEmployee2(@PathVariable("id") Long id) {
+        return service.getEmployee1(id).orElseThrow(() ->new EntityNotFoundException("employee"));
+    }
+
     @GetMapping("/employees")
     List<Employee> getEmployee(@RequestParam("page") Integer page, @RequestParam("size") Integer pageSize) {
         logger.info("page: " + page + "  size: " + pageSize);
@@ -48,7 +54,7 @@ public class EmployeeController {
 
     @GetMapping("/employeesdetail/{id}")
     EmployeeDetail employeeDetail(@PathVariable("id") Long id) {
-        return service.employeeDetail(id);
+        return service.getEmployeeDetail(Long.valueOf(id));
 //        EmployeeDetail employeeDetail = employeeDetailMapper.selectById(id);
 //        return employeeDetail;
     }
@@ -56,7 +62,7 @@ public class EmployeeController {
     @GetMapping("/employeesdetail/lazy/{id}")
     EmployeeDetail getEmployeeDetail(@PathVariable("id") Long id) {
         //return service.employeeDetail(id);
-        EmployeeDetail employeeDetail = service.employeeDetail(id);
+        EmployeeDetail employeeDetail = service.getEmployeeDetail(id);
         logger.info("load employeeDetail");
         Title title = employeeDetail.getTitle();
 

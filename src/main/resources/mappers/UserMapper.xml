@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.empserver.mapper.UserMapper">
+
+    <cache
+            eviction="FIFO"
+            flushInterval="60000"
+            size="512"
+            readOnly="true"/>
+
+    <resultMap id="userResultMap" type="User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="imageUrl" column="image_url"/>
+        <result property="emailVerified" column="email_verified"/>
+        <result property="password" column="password"/>
+        <result property="provider" column="provider"/>
+        <result property="providerId" column="provider_id"/>
+    </resultMap>
+    <insert id="insertUser" parameterType="User">
+        insert into users(email, email_verified, image_url, name, password, provider, provider_id)
+        values (#{email}, #{emailVerified}, #{imageUrl}, #{name}, #{password}, #{provider}, #{providerId})</insert>
+    <!--    <select id="selectById" resultType="User">select name, email from users where email = </select>-->
+    <select id="selectByEmail" parameterType="String" resultMap="userResultMap">select email,
+                                                        email_verified,
+                                                        image_url,
+                                                        name,
+                                                        password,
+                                                        provider,
+                                                        provider_id
+                                                 from users
+                                                 where email = #{email}</select>
+
+    <!--    <select id="selectById" parameterType="long" resultMap="userResultMap">-->
+    <!--        SELECT name , title, from_date, to_date-->
+    <!--        FROM titles-->
+    <!--        WHERE emp_no = #{id}-->
+    <!--    </select>-->
+</mapper>

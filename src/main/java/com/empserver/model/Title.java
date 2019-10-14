@@ -43,6 +43,32 @@ public class Title implements Serializable {
     public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Title title1 = (Title) o;
+
+        return new org.apache.commons.lang3.builder.EqualsBuilder()
+                .append(employeeNo, title1.employeeNo)
+                .append(title, title1.title)
+                .append(fromDate, title1.fromDate)
+                .append(toDate, title1.toDate)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new org.apache.commons.lang3.builder.HashCodeBuilder(17, 37)
+                .append(employeeNo)
+                .append(title)
+                .append(fromDate)
+                .append(toDate)
+                .toHashCode();
+    }
 }
 
 

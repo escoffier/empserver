@@ -3,9 +3,9 @@
 <mapper namespace="com.empserver.mapper.EmployeeDetailMapper">
     <cache
             eviction="FIFO"
-    flushInterval="60000"
-    size="512"
-    readOnly="true"/>
+            flushInterval="60000"
+            size="512"
+            readOnly="true"/>
 
     <cache-ref namespace="com.empserver.mapper.TitleMapper"/>
 
@@ -31,22 +31,22 @@
     </resultMap>
 
     <!--<select id="selectById" parameterType="long" resultMap="employeesDetailResultMap" flushCache="true">-->
-        <!--select E.emp_no,-->
-               <!--E.birth_date,-->
-               <!--E.first_name,-->
-               <!--E.last_name,-->
-               <!--E.gender,-->
-               <!--E.hire_date,-->
-               <!--T.title,-->
-               <!--T.from_date,-->
-               <!--T.to_date,-->
-               <!--S.salary,-->
-               <!--S.from_date,-->
-               <!--S.to_date-->
-        <!--from employees E-->
-                 <!--left outer join titles T on T.emp_no = E.emp_no-->
-                 <!--left outer join salaries S on S.emp_no = T.emp_no-->
-        <!--where E.emp_no = #{id}-->
+    <!--select E.emp_no,-->
+    <!--E.birth_date,-->
+    <!--E.first_name,-->
+    <!--E.last_name,-->
+    <!--E.gender,-->
+    <!--E.hire_date,-->
+    <!--T.title,-->
+    <!--T.from_date,-->
+    <!--T.to_date,-->
+    <!--S.salary,-->
+    <!--S.from_date,-->
+    <!--S.to_date-->
+    <!--from employees E-->
+    <!--left outer join titles T on T.emp_no = E.emp_no-->
+    <!--left outer join salaries S on S.emp_no = T.emp_no-->
+    <!--where E.emp_no = #{id}-->
     <!--</select>-->
 
     <resultMap id="employeesDetailResultMap1" type="EmployeeDetail">
@@ -56,15 +56,16 @@
         <result property="lastName" column="last_name"/>
         <result property="gender" column="gender"/>
         <result property="hireDate" column="hire_date"/>
-        <association property="title" column="emp_no" javaType="Title" select="com.empserver.mapper.TitleMapper.selectById"/>
+        <association property="title" column="emp_no" javaType="Title"
+                     select="com.empserver.mapper.TitleMapper.selectById"/>
         <collection property="salaries" column="emp_no" ofType="Salary" select="selectSalary"/>
     </resultMap>
 
     <!--<resultMap id="titleResultMap" type="Title">-->
-        <!--<id property="employeeNo" column="emp_no"/>-->
-        <!--<result property="title" column="title"/>-->
-        <!--<result property="fromDate" column="from_date"/>-->
-        <!--<result property="toDate" column="to_date"/>-->
+    <!--<id property="employeeNo" column="emp_no"/>-->
+    <!--<result property="title" column="title"/>-->
+    <!--<result property="fromDate" column="from_date"/>-->
+    <!--<result property="toDate" column="to_date"/>-->
     <!--</resultMap>-->
 
     <resultMap id="salaryResultMap" type="Salary">
@@ -87,9 +88,9 @@
     </select>
 
     <!--<select id="selectTitle" parameterType="long" resultMap="titleResultMap">-->
-        <!--SELECT emp_no, title, from_date, to_date-->
-        <!--FROM titles-->
-        <!--WHERE emp_no = #{id}-->
+    <!--SELECT emp_no, title, from_date, to_date-->
+    <!--FROM titles-->
+    <!--WHERE emp_no = #{id}-->
     <!--</select>-->
     <!--<cache/>-->
 

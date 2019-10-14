@@ -11,7 +11,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Optional;
+
 @Component
+@org.springframework.stereotype.Service
 @Transactional
 public class ServiceImpl implements Service {
 
@@ -25,7 +28,13 @@ public class ServiceImpl implements Service {
     TitleMapper titleMapper;
 
     public Employee getEmployee(Long id) {
+        //Optional<Employee> employee = new Optional<>(employeeMapper.selectById(id));
         return employeeMapper.selectById(id);
+    }
+
+    public Optional<Employee> getEmployee1(Long id) {
+        Optional<Employee> employee =  Optional.ofNullable(employeeMapper.selectById(id));
+        return  employee;
     }
 
     public Title getTitle(Long id){
@@ -33,7 +42,7 @@ public class ServiceImpl implements Service {
     }
 
     @Override
-    public EmployeeDetail employeeDetail(Long id) {
+    public EmployeeDetail getEmployeeDetail(Long id) {
         EmployeeDetail employeeDetail = employeeDetailMapper.selectById(id);
         return employeeDetail;
     }

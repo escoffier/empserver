@@ -37,4 +37,30 @@ public class Order {
     public void setCustomer(String customer) {
         this.customer = customer;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        return new org.apache.commons.lang3.builder.EqualsBuilder()
+                .append(id, order.id)
+                .append(status, order.status)
+                .append(total, order.total)
+                .append(customer, order.customer)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
+        return new org.apache.commons.lang3.builder.HashCodeBuilder(17, 37)
+                .append(id)
+                .append(status)
+                .append(total)
+                .append(customer)
+                .toHashCode();
+    }
 }

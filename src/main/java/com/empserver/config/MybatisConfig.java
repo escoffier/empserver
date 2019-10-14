@@ -7,8 +7,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -20,6 +22,7 @@ import java.io.InputStream;
 import java.io.Reader;
 
 @Configuration
+@AutoConfigureAfter(AppConfig.class)
 @MapperScan(basePackages = {"com.empserver.mapper"} ,sqlSessionFactoryRef = "defaultSqlSessionFactory")
 public class MybatisConfig {
 
@@ -48,9 +51,13 @@ public class MybatisConfig {
 //        return sqlSessionFactoryBean.getObject();
 //    }
 
+    @Autowired
+    //@Qualifier("writeReadDataSource")
+    WriteReadRoutingDataSource dataSource;
+
     @Bean("defaultSqlSessionFactory")
-    SqlSessionFactory sqlSessionFactory(DataSource dataSource,
-                                        //@Value("classpath:mappers/*.xml") Resource[] resources,
+    SqlSessionFactory sqlSessionFactory(
+            //@Value("classpath:mappers/*.xml") Resource[] resources,
                                         @Value("classpath:mybatis-config.xml") Resource config) throws Exception{
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
