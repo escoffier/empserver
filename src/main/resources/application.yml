@@ -41,14 +41,14 @@ app:
     tokenExpirationMsec: 864000000
   write:
     datasource:
-      jdbc-url: jdbc:mysql://192.168.254.131:3306/employees?useSSL=true&serverTimezone=UTC
-      username: testuser
+      jdbc-url: jdbc:mysql://localhost:3306/employees?useSSL=true&serverTimezone=UTC
+      username: root
       password: 19811981
       driver-class-name: com.mysql.cj.jdbc.Driver
   read:
     datasource:
-      jdbc-url: jdbc:mysql://192.168.254.132:3306/employees?useSSL=true&serverTimezone=UTC
-      username: testuser
+      jdbc-url: jdbc:mysql://localhost:3306/employees?useSSL=true&serverTimezone=UTC
+      username: root
       password: 19811981
       driver-class-name: com.mysql.cj.jdbc.Driver
 
