@@ -13,10 +13,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@EnableTransactionManagement(order = 10)
+@EnableTransactionManagement(order = 10, proxyTargetClass = false)
 public class AppConfig {
 
-    @Bean
+    @Bean(name = "split-rw-datasource")
     DataSourceTransactionManager dataSourceTransactionManager() {
         DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager(writeReadDataSource());
         //dataSourceTransactionManager.setDataSource(dataSource);

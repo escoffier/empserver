@@ -7,32 +7,42 @@ import com.empserver.model.Employee;
 import com.empserver.model.EmployeeDetail;
 import com.empserver.model.Title;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
+import java.math.BigDecimal;
 import java.util.Optional;
 
-@Component
-@org.springframework.stereotype.Service
-@Transactional
-public class ServiceImpl implements Service {
+//@Component
+@Service
+//@Transactional
+public class ServiceImpl implements EmployeeService {
 
     @Autowired
+    public ServiceImpl(EmployeeDetailMapper employeeDetailMapper, EmployeeMapper employeeMapper, TitleMapper titleMapper) {
+        this.employeeDetailMapper = employeeDetailMapper;
+        this.employeeMapper = employeeMapper;
+        this.titleMapper = titleMapper;
+    }
+
+    //@Autowired
     EmployeeDetailMapper employeeDetailMapper;
 
-    @Autowired
+    //@Autowired
     EmployeeMapper employeeMapper;
 
-    @Autowired
+    //@Autowired
     TitleMapper titleMapper;
 
+    @Transactional
     public Employee getEmployee(Long id) {
-        //Optional<Employee> employee = new Optional<>(employeeMapper.selectById(id));
-        return employeeMapper.selectById(id);
+         return employeeMapper.selectById(id);
     }
 
     public Optional<Employee> getEmployee1(Long id) {
+        BigDecimal bigDecimal;
         Optional<Employee> employee =  Optional.ofNullable(employeeMapper.selectById(id));
         return  employee;
     }

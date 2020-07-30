@@ -7,10 +7,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties(AppProperties.class)
-public class EmpserverApplication {
+public class EmployeeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EmpserverApplication.class, args);
+        SpringApplication.run(EmployeeApplication.class, args);
     }
 
 }

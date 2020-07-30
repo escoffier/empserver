@@ -5,6 +5,7 @@ import com.empserver.mapper.EmployeeMapper;
 import com.empserver.model.Employee;
 import com.empserver.model.EmployeeDetail;
 import com.empserver.model.Title;
+import com.empserver.service.EmployeeService;
 import com.empserver.service.ServiceImpl;
 import com.empserver.util.ExtLimit;
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ public class EmployeeController {
     EmployeeMapper employeeMapper;
 
     @Autowired
-    ServiceImpl service;
+    EmployeeService service;
 
     @GetMapping("/employees/{id}")
     Employee getEmployee(@PathVariable("id") Long id) {
@@ -35,6 +36,7 @@ public class EmployeeController {
 
     @GetMapping("v2/employees/{id}")
     Employee getEmployee2(@PathVariable("id") Long id) {
+        service.getClass();
         return service.getEmployee1(id).orElseThrow(() ->new EntityNotFoundException("employee"));
     }
 

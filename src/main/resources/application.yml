@@ -12,7 +12,7 @@
 
 spring:
   profiles:
-    active: with-security
+    active: development
 #  datasource:
 #    url: jdbc:mysql://192.168.254.131:3306/employees?useSSL=true&serverTimezone=UTC
 #    username: testuser
@@ -22,10 +22,12 @@ spring:
     name: EmployeesServer
 
 logging:
-  file: empserver.log
   level:
     org:
       mybatis: TRACE
+      springframework:
+        transaction: trace
+        jpa: debug
     com:
       empserver: TRACE
     io:
@@ -33,6 +35,8 @@ logging:
         resilience4j: TRACE
 
   #file: ${spring.application.name}.log
+  file:
+    name: empserver.log
 
 
 app:
@@ -136,6 +140,11 @@ resilience4j.ratelimiter:
       limitForPeriod: 600
       limitRefreshPeriod: 500ms
       timeoutDuration: 3s
+---
+spring:
+  profiles:
+    include: with-security
+
 
 management:
   endpoints:
